@@ -1,0 +1,39 @@
+{
+  "name": "@dstanesc/gpt",
+  "version": "0.0.1",
+  "description": "Simple unix style utility adding gpt model interaction to the command line",
+  "repository": "https://github.com/dstanesc/gpt.git",
+  "main": "index.js",
+  "bin": {
+    "gpt": "dist/index.js"
+  },
+  "scripts": {
+    "clean": "rimraf dist node_modules",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "gpt",
+    "literate programming",
+    "llm",
+    "ai",
+    "unix",
+    "pipeline"
+  ],
+  "license": "(Apache-2.0 AND MIT)",
+  "author": "dstanesc <dstanesc@gmail.com>",
+  "dependencies": {
+    "@types/node": "^20.12.5",
+    "arg": "^5.0.2",
+    "commander": "^12.0.0",
+    "gpt4all": "^4.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.4"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "npm-run-all": "4.1.5",
+    "prettier": "^2.7.1",
+    "rimraf": "3.0.2"
+  }
+}
