@@ -56,12 +56,12 @@ export async function createChatSession(options: GptOptions): Promise<{
   };
   console.error("model options", JSON.stringify(modelOptions, null, 2));
   const model = await loadModel(options.model, modelOptions);
-  const threadCount = options.threadCount || 3;
+  const threadCount = options.threadCount || 24;
   console.error("thread count", threadCount);
   model.llm.setThreadCount(threadCount);
   const chatOptions = {
     temperature: options.temperature || 0.7,
-    systemPrompt: options.systemPrompt || "### System: You are an expert software developer\n",
+    systemPrompt: options.systemPrompt || "### System: You are an experienced mathematician and software developer\n",
     topP: options.topP || 0.4,
     minP: options.minP || 0,
     topK: options.topK || 40,
