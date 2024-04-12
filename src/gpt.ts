@@ -39,7 +39,7 @@ export function fromEnv(): GptOptions {
 
 export function validateOptions(options: GptOptions): void {
   if (!options.model) {
-    options.model = "alphamonarch-7b.Q4_0.gguf";
+    options.model = "mistral-7b-instruct-v0.1.Q4_0.gguf";
   }
 }
 
@@ -50,7 +50,7 @@ export async function createChatSession(options: GptOptions): Promise<{
   validateOptions(options);
   console.error("requested options", JSON.stringify(options, null, 2));
   const modelOptions = {
-    device: options.device || "cpu",
+    device: options.device || "auto",
     nCtx: options.contextLength || 2048,
     verbose: true,
   };

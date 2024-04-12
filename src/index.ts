@@ -20,29 +20,50 @@ function inputs() {
     "--topp": Number,
     "--minp": Number,
     "--topk": Number,
+
+    // Aliases
+    "-h": "--help",
+    "-f": "--file",
+    "-p": "--prepend",
+    "-a": "--append",
+    "-m": "--model",
+    "-d": "--device",
+    "-t": "--temperature",
+    "-c": "--context-length",
+    "-r": "--thread-count",
+    "-s": "--system-prompt",
+    "-o": "--topp",
+    "-i": "--minp",
+    "-k": "--topk",
   });
 }
 
 function help() {
+  console.log("\n");
   console.log("Usage: gpt [options] 'user prompt'");
   console.log("\n");
   console.log("Options:");
-  console.log("  --file: input file name, e.g. input.txt");
-  console.log("  --prepend: prepend text to user prompt");
-  console.log("  --append: append text to user prompt");
-  console.log("  --model: model name, e.g. mistral-7b-instruct-v0.1.Q4_0.gguf");
-  console.log("  --device: device type, e.g. cpu, gpu");
-  console.log("  --temperature: temperature, e.g. 0.7");
-  console.log("  --context-length: context length, e.g. 2048");
-  console.log("  --thread-count: thread count, e.g. 24");
+  console.log("\n");
+  console.log("  -f, --file: input file name, appends file content to user prompt");
+  console.log("  -p, --prepend: prepend text to piped input");
+  console.log("  -a, --append: append text to piped input");
   console.log(
-    "  --system-prompt: system prompt, e.g. '### System: You are an experienced javascript developer'"
+    "  -m, --model: model name, e.g. mistral-7b-instruct-v0.1.Q4_0.gguf"
   );
-  console.log("  --topp: topp, e.g. 0.4");
-  console.log("  --minp: minp, e.g. 0.0");
-  console.log("  --topk: topk, e.g. 40");
+  console.log("  -d, --device: device type, e.g. cpu, gpu");
+  console.log("  -t, --temperature: temperature, e.g. 0.7");
+  console.log("  -c, --context-length: context length, e.g. 2048");
+  console.log("  -r, --thread-count: thread count, e.g. 24");
+  console.log(
+    "  -s, --system-prompt: system prompt, e.g. '### System: You are an experienced javascript developer'"
+  );
+  console.log("  -o, --topp: topp, e.g. 0.4");
+  console.log("  -i, --minp: minp, e.g. 0.0");
+  console.log("  -k, --topk: topk, e.g. 40");
   console.log("\n");
   console.log("Examples:");
+  console.log("\n");
+  console.log("  gpt '1+1'");
   console.log(
     "  xsel -b | gpt --prepend 'Pretty print following json' | codedown json | tee pretty.json"
   );
@@ -54,6 +75,9 @@ function help() {
   );
   console.log(
     "  echo 'write a python function that prints first 10 Fibonacci numbers' | gpt | codedown python | python3"
+  );
+  console.log(
+    "  echo 'create a html page that displays a plotlyjs based bar chart with the top 10 US cities by population' | gpt | codedown html | tee page.html"
   );
   console.log("\n");
 }
